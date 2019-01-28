@@ -80,7 +80,8 @@ func main() {
 		core.RegisterUDPConnectionHandler(echo.NewUDPHandler())
 		break
 	case "socks":
-		core.RegisterTCPConnectionHandler(socks.NewTCPHandler(proxyHost, proxyPort,*proxyCipher, *proxyPassword))
+		log.Printf("password: %s",*proxyPassword)
+		core.RegisterTCPConnectionHandler(socks.NewTCPHandler(proxyHost, proxyPort,*proxyPassword, *proxyPassword))
 		core.RegisterUDPConnectionHandler(socks.NewUDPHandler(proxyHost, proxyPort, *udpTimeout))
 		break
 	case "shadowsocks":
@@ -153,4 +154,4 @@ func main() {
 	osSignals := make(chan os.Signal, 1)
 	signal.Notify(osSignals, os.Interrupt, os.Kill, syscall.SIGTERM, syscall.SIGHUP)
 	<-osSignals
-}
+}}

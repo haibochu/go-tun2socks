@@ -57,6 +57,8 @@ func (h *tcpHandler) getConn(conn core.Connection) (net.Conn, bool) {
 
 func (h *tcpHandler) Connect(conn core.Connection, target net.Addr) error {
 	var auth *proxy.Auth
+
+	log.Printf("password: %s",h.proxyUser)
 	auth.User = h.proxyUser
 	auth.Password = h.proxyPwd
 	dialer, err := proxy.SOCKS5("tcp", core.ParseTCPAddr(h.proxyHost, h.proxyPort).String(), auth, nil)
