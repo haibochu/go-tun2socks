@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/eycorsican/go-tun2socks/core"
-	"github.com/eycorsican/go-tun2socks/proxy"
+	"github.com/haibochu/go-tun2socks/core"
+	"github.com/haibochu/go-tun2socks/proxy"
 )
 
 type udpHandler struct {

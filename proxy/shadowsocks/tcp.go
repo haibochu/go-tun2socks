@@ -12,7 +12,7 @@ import (
 	sscore "github.com/shadowsocks/go-shadowsocks2/core"
 	sssocks "github.com/shadowsocks/go-shadowsocks2/socks"
 
-	"github.com/eycorsican/go-tun2socks/core"
+	"github.com/haibochu/go-tun2socks/core"
 )
 
 type tcpHandler struct {

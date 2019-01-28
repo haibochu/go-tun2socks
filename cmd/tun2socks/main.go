@@ -19,13 +19,13 @@ import (
 	vbytespool "v2ray.com/core/common/bytespool"
 	vrouting "v2ray.com/core/features/routing"
 
-	"github.com/eycorsican/go-tun2socks/core"
-	"github.com/eycorsican/go-tun2socks/filter"
-	"github.com/eycorsican/go-tun2socks/proxy/echo"
-	"github.com/eycorsican/go-tun2socks/proxy/shadowsocks"
-	"github.com/eycorsican/go-tun2socks/proxy/socks"
-	"github.com/eycorsican/go-tun2socks/proxy/v2ray"
-	"github.com/eycorsican/go-tun2socks/tun"
+	"github.com/haibochu/go-tun2socks/core"
+	"github.com/haibochu/go-tun2socks/filter"
+	"github.com/haibochu/go-tun2socks/proxy/echo"
+	"github.com/haibochu/go-tun2socks/proxy/shadowsocks"
+	"github.com/haibochu/go-tun2socks/proxy/socks"
+	"github.com/haibochu/go-tun2socks/proxy/v2ray"
+	"github.com/haibochu/go-tun2socks/tun"
 )
 
 const (
@@ -71,7 +71,7 @@ func main() {
 	// Wrap a writer to delay ICMP packets if delay time is not zero.
 	if *delayICMP > 0 {
 		lwipWriter = filter.NewICMPFilter(lwipWriter, *delayICMP).(io.Writer)
-	}
+
 
 	// Register TCP and UDP handlers to handle accepted connections.
 	switch *proxyType {
@@ -80,7 +80,7 @@ func main() {
 		core.RegisterUDPConnectionHandler(echo.NewUDPHandler())
 		break
 	case "socks":
-		core.RegisterTCPConnectionHandler(socks.NewTCPHandler(proxyHost, proxyPort))
+		core.RegisterTCPConnectionHandler(socks.NewTCPHandler(proxyHost, proxyPort,*proxyCipher, *proxyPassword))
 		core.RegisterUDPConnectionHandler(socks.NewUDPHandler(proxyHost, proxyPort, *udpTimeout))
 		break
 	case "shadowsocks":

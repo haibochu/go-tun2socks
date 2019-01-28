@@ -4,7 +4,7 @@ import (
 	"log"
 	"net"
 
-	"github.com/eycorsican/go-tun2socks/core"
+	"github.com/haibochu/go-tun2socks/core"
 )
 
 // An echo server, do nothing but echo back data to the sender.

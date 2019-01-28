@@ -14,8 +14,8 @@ import (
 	vsession "v2ray.com/core/common/session"
 	vdns "v2ray.com/core/features/dns"
 
-	"github.com/eycorsican/go-tun2socks/core"
-	"github.com/eycorsican/go-tun2socks/proxy"
+	"github.com/haibochu/go-tun2socks/core"
+	"github.com/haibochu/go-tun2socks/proxy"
 )
 
 func isIPv4(ip net.IP) bool {

@@ -11,19 +11,22 @@ import (
 
 	"golang.org/x/net/proxy"
 
-	"github.com/eycorsican/go-tun2socks/core"
+	"github.com/haibochu/go-tun2socks/core"
 )
 
 type tcpHandler struct {
 	sync.Mutex
-
+	proxyUser string
+	proxyPwd string
 	proxyHost string
 	proxyPort uint16
 	conns     map[core.Connection]net.Conn
 }
 
-func NewTCPHandler(proxyHost string, proxyPort uint16) core.ConnectionHandler {
+func NewTCPHandler(proxyHost string, proxyPort uint16,proxyUser string,proxyPwd string) core.ConnectionHandler {
 	return &tcpHandler{
+		proxyUser: proxyUser,
+		proxyPwd: proxyPwd,
 		proxyHost: proxyHost,
 		proxyPort: proxyPort,
 		conns:     make(map[core.Connection]net.Conn, 16),
@@ -53,7 +56,10 @@ func (h *tcpHandler) getConn(conn core.Connection) (net.Conn, bool) {
 }
 
 func (h *tcpHandler) Connect(conn core.Connection, target net.Addr) error {
-	dialer, err := proxy.SOCKS5("tcp", core.ParseTCPAddr(h.proxyHost, h.proxyPort).String(), nil, nil)
+	var auth *proxy.Auth
+	auth.User = h.proxyUser
+	auth.Password = h.proxyPwd
+	dialer, err := proxy.SOCKS5("tcp", core.ParseTCPAddr(h.proxyHost, h.proxyPort).String(), auth, nil)
 	if err != nil {
 		return err
 	}

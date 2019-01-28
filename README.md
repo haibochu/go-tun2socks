@@ -48,8 +48,8 @@ Application +-> Routing table +-->                                              
 `go-tun2socks` is using `cgo`, thus a C compiler is required.
 
 ```sh
-go get github.com/eycorsican/go-tun2socks
-cd $GOPATH/src/github.com/eycorsican/go-tun2socks
+go get github.com/haibochu/go-tun2socks
+cd $GOPATH/src/github.com/haibochu/go-tun2socks
 go get -d ./...
 make clean && make build
 ./build/tun2socks -h
@@ -63,8 +63,8 @@ An alternative way to build (or cross compile) tun2socks is to use [`xgo`](https
 # install xgo
 go get github.com/karalabe/xgo
 
-go get github.com/eycorsican/go-tun2socks
-cd $GOPATH/src/github.com/eycorsican/go-tun2socks
+go get github.com/haibochu/go-tun2socks
+cd $GOPATH/src/github.com/haibochu/go-tun2socks
 go get -d ./...
 make clean && make release
 ls ./build
@@ -222,15 +222,15 @@ Sample code for creating a `lwIP Stack` and doing IP packets inputing/outputing,
 
 ## Creating a Framework for iOS
 
-https://github.com/eycorsican/go-tun2socks-ios
+https://github.com/haibochu/go-tun2socks-ios
 
 ## Creating an AAR library for Android
 
-https://github.com/eycorsican/go-tun2socks-android
+https://github.com/haibochu/go-tun2socks-android
 
 ## This project is using lwIP 
 
-This project is using a modified version of lwIP, you can checkout this repo to find out what are the changes: https://github.com/eycorsican/lwip
+This project is using a modified version of lwIP, you can checkout this repo to find out what are the changes: https://github.com/haibochu/lwip
 
 ## Many thanks to the following projects
 - https://savannah.nongnu.org/projects/lwip

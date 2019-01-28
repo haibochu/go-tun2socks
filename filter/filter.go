@@ -10,7 +10,7 @@ import (
 	vsession "v2ray.com/core/common/session"
 	vrouting "v2ray.com/core/features/routing"
 
-	"github.com/eycorsican/go-tun2socks/route"
+	"github.com/haibochu/go-tun2socks/route"
 )
 
 // Filter is used for filtering IP packets comming from TUN.
